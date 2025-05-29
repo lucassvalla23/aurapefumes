@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.carousel-container {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  
+  /* Banner overlay for better visibility on mobile */
+  .relative h-[300px] .absolute.inset-0.bg-gradient-to-b {
+    background: linear-gradient(to bottom, 
+      rgba(0,0,0,0.5) 0%, 
+      rgba(0,0,0,0.2) 40%, 
+      rgba(0,0,0,0.2) 60%, 
+      rgba(0,0,0,0.6) 100%);
+  }
+  
+  footer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  footer h3 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  footer h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    height: 2px;
+    background-color: rgba(217, 206, 190, 0.6);
+  }
+  
+  footer .sm\:text-left h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  @media (min-width: 640px) {
+    footer .sm\:text-left h3::after {
+      left: 0;
+      transform: none;
+    }
+  }
+}
+
+/* Added mobile menu styles for better visibility */
+.mobile-menu-link {
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-link:active {
+  transform: scale(0.98);
+}
+
+/* Footer styles */
+footer ul li a, 
+footer ul li span {
+  transition: all 0.2s ease;
+}
+
+footer ul li a:hover {
+  transform: translateX(2px);
+}
